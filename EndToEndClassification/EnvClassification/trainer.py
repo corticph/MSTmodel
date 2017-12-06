@@ -1,3 +1,17 @@
+# Copyright 2018 Corti
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#   http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import tensorflow as tf
 import numpy as np
 import os
@@ -7,10 +21,10 @@ from EndToEndClassification.Utilities import dump_pickle, classification_accurac
 
 class ClassifierTrainer():
     """
-    Trainer for an environmental sound classifier. Will infer the correct folds for saving from the dataset as well 
+    Trainer for an environmental sound classifier. Will infer the correct folds for saving from the dataset as well
     as whether it's being trained on raw speech or log Mel-spectrograms from the input.
-    
-    To use the trainer with the first 3 layers pretrained to the log Mel-spectrogram transformation provide a 
+
+    To use the trainer with the first 3 layers pretrained to the log Mel-spectrogram transformation provide a
     restore path to the 'MSTmodel_initialized' parameter.
     """
 
@@ -19,7 +33,7 @@ class ClassifierTrainer():
                  save_separate=True):
         """
         Initializes the trainer class.
-        
+
         Args:
             model (class): initialized model (Piczak or RawPiczak).
             dataset (class): loaded (ESC50) dataset (ClassifierLoader).
@@ -27,7 +41,7 @@ class ClassifierTrainer():
             seed (int): seed for initializing the pseudo-rng for reproducibility purposes.
             save_model (bool): if True the model is saved as well as the results.
             MSTmodel_initialized (bool or str): if False the raw speech model is trained with random initialization
-                                            else a string must be provided to a trained MSTmodel and the first 3 layers 
+                                            else a string must be provided to a trained MSTmodel and the first 3 layers
                                             are initialized with the parameters from that model.
             piczak_initialized (bool or str): optionally initialize the Piczak part of the model with one that was
                                             previously trained.
@@ -109,9 +123,9 @@ class ClassifierTrainer():
 
     def train(self, batch_size=500, no_epochs=200, lr=5e-3, momentum=0.9, momentum_optimizer=True):
         """
-        Performs training of the classifier with a pre-defined number of epochs and a constant learning rate. 
+        Performs training of the classifier with a pre-defined number of epochs and a constant learning rate.
         The momentum optimizer is used by default, else Adam.
-        
+
         Args:
             batch_size (int): number of train examples in a mini-batch.
             no_epochs (int): number of epochs (pre-defined, no overfitting test implemented in this set-up).

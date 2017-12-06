@@ -8,13 +8,9 @@ export CUDA_VISIBLE_DEVICES="0"
 # 3. in the case of initialization: the base_path_pretrained_MST to the folder with fold-specific trained MSTmodels
 
 
-
-
 base_data_path=""
 base_save_folder=""
 base_path_pretrained_MST=""
-
-
 
 
 # baseline spectrogram training

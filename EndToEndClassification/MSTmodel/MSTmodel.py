@@ -1,3 +1,17 @@
+# Copyright 2018 Corti
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#   http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
 from tensorflow.contrib.layers.python.layers import initializers
@@ -13,7 +27,7 @@ class MSTmodel():
                  biases_initializer=init_ops.zeros_initializer(), weights_regularizer=None, biases_regularizer=None):
         """
         Initializes the MSTmodel model class.
-        
+
         Args:
             model_name (str): model name.
             num_classes (int): number of the classes (i.e. size of the output layer of the classifier).
@@ -33,7 +47,7 @@ class MSTmodel():
         """
         Builds the graph from input tensor to model prediction. The 'is_training' argument is not used for now, but
         it allows easy handling of potential dropout/batchnorm layers.
-                
+
         Args:
             input_tensor (tf tensor): input, with dimensions [batch_size, time, nr_channels=1].
             is_training (bool): whether in training mode (True) or evaluation mode (False)
@@ -78,11 +92,11 @@ class MSTmodel():
     def get_loss_op(self, predictions, labels):
         """
         Builds the MSE loss op.
-        
+
         Args:
             predictions (tf tensor): the batch of predicted log Mel-spectrograms.
             labels (tf tensor): the batch of label log Mel-spectrograms.
-        
+
         Returns:
             (tf operation): computes the MSE loss operation averaged over the mini-batch.
         """

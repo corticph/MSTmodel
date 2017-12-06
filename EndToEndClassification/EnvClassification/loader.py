@@ -1,3 +1,17 @@
+# Copyright 2018 Corti
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#   http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import numpy as np
 import random
 
@@ -10,13 +24,13 @@ class ClassifierLoader():
 
     def __init__(self, features_path, test_fold, validation_fold, raw=False, deltas=False):
         """
-        Initializes the classfifier loader. 
-        
+        Initializes the classfifier loader.
+
         Args:
-            features_path (str): path to the processed esc50 features. 
-            test_fold (int): fold used for testing (not used). 
-            validation_fold (int): fold used for validation. 
-            raw (bool): whether or not raw features are used for training the classifier. 
+            features_path (str): path to the processed esc50 features.
+            test_fold (int): fold used for testing (not used).
+            validation_fold (int): fold used for validation.
+            raw (bool): whether or not raw features are used for training the classifier.
             deltas (bool): whether to compute and use delta features (can only be used together with mel-spectrogram
                             features).
         """
@@ -92,9 +106,9 @@ class ClassifierLoader():
     def generate_deltas(self, X):
         """
         Generates deltas for each of the mel-spectrograms.
-        
+
         Args:
-            X (np.array): the mel-spectrograms. 
+            X (np.array): the mel-spectrograms.
 
         Returns:
             (np.array): the mel-spectrograms with their deltas (added in the channel dimension).
@@ -128,10 +142,10 @@ class ClassifierLoader():
 
     def load_batch(self, batch_indices):
         """
-        Loads a single batch from the trainset. 
+        Loads a single batch from the trainset.
 
         Args:
-            batch_indices (list): indices for the batch. 
+            batch_indices (list): indices for the batch.
 
         Returns:
             (np.array): batch examples.

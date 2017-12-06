@@ -7,12 +7,8 @@ export CUDA_VISIBLE_DEVICES="0"
 # 2. the base_save_folder in which each MSTmodel (+results +predictions) will be saved in a fold-specific subfolder
 
 
-
-
 base_data_path=""
 base_save_folder=""
-
-
 
 
 python mst_learning.py $base_data_path $base_save_folder 1 2
