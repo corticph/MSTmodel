@@ -1,6 +1,0 @@
-EndToEndClassification
-EndToEndClassification/Dataset
-EndToEndClassification/EnvClassification
-EndToEndClassification/EnvClassification/Models
-EndToEndClassification/MSTModel
-EndToEndClassification/Utilities
