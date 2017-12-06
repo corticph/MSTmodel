@@ -1,3 +1,17 @@
+# Copyright 2018 Corti
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#   http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
 from tensorflow.contrib.layers.python.layers import initializers
@@ -8,9 +22,9 @@ class Piczak():
     """
     Baseline convolutional neural network model introduced by Piczak for environmental sound classification using
     logscaled Mel-spectrograms as input.
-    
+
     For details, see:
-    K. J. Piczak. Environmental Sound Classification with Convolutional Neural Networks. In Proceedings of the IEEE 
+    K. J. Piczak. Environmental Sound Classification with Convolutional Neural Networks. In Proceedings of the IEEE
     25th International Workshop on Machine Learning for Signal Processing (MLSP), pp. 1-6, IEEE, 2015.
     """
 
@@ -18,7 +32,7 @@ class Piczak():
                  biases_initializer=init_ops.zeros_initializer(), weights_regularizer=None, biases_regularizer=None):
         """
         Initializes the PiczakCNN model class.
-        
+
         Args:
             model_name (str): model name.
             num_classes (int): number of the classes (i.e. size of the output layer of the classifier).
@@ -103,12 +117,12 @@ class Piczak():
     def get_loss_op(self, prediction, label_tensor):
         """
         Builds the cross entropy loss op.
-        
+
         Args:
             prediction (tf tensor): model prediction with dimensions [batch_size, num_classes].
             label_tensor (tf tensor): integer labels (not one-hot encoded!) with dimension [batch_size] where
                                     each entry in labels must be an index in [0, num_classes).
-        
+
         Returns:
             (tf operation): computes cross entropy loss op averaged over the mini-batch.
         """
@@ -121,7 +135,7 @@ class Piczak():
     def save(self, path, sess):
         """
         Saves the model variables to the specified path.
-        
+
         Args:
             path (str): folder path where the checkpoint will be saved.
             sess (tf Session): the session.
@@ -134,7 +148,7 @@ class Piczak():
     def load_piczak(self, path, sess):
         """
         Loads the model variables from the specified path.
-        
+
         Args:
             path (str): folder path from where the checkpoint will be loaded.
             sess (tf Session): the session.

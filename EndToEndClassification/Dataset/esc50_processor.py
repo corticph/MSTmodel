@@ -1,3 +1,17 @@
+# Copyright 2018 Corti
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#   http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import os
 import progressbar
 import multiprocessing
@@ -28,10 +42,10 @@ CPU_COUNT = multiprocessing.cpu_count()
 
 def ESC50Processor(esc_50_path, destination_folder):
     """
-    Wrapper function for convenient processing. First subfolders are made in the destination folder for the processed 
-    dataset (1) and the logmel and raw waveform features (i.e. the segmented/augmented features). 
+    Wrapper function for convenient processing. First subfolders are made in the destination folder for the processed
+    dataset (1) and the logmel and raw waveform features (i.e. the segmented/augmented features).
     One can use the internal functions if more flexibility is required.
-    
+
     Args:
         esc_50_path (str): path to the esc50 data.
         destination_folder (str): path to a destination folder.
@@ -59,11 +73,11 @@ def ESC50Processor(esc_50_path, destination_folder):
 
 def _process_esc50(esc_50_path, save_path):
     """
-    Processes the 2000 5-sec clips of the esc50 dataset and dumps a pickle with the metadata for each audio file. 
+    Processes the 2000 5-sec clips of the esc50 dataset and dumps a pickle with the metadata for each audio file.
     The sample rate is hard-coded to 22050.
-    
+
     Taken with permission from 'https://github.com/karoldvl/paper-2015-esc-convnet' with minor adaptions.
-    
+
     Args:
         esc_50_path (str): path to the base folder containing the class-specific subfolders.
         save_path (str): folder in which the esc50_audio.dat and the esc50_meta.pkl files will be saved.
@@ -117,17 +131,17 @@ def _process_esc50(esc_50_path, save_path):
 def _dump_features_processed_esc50_combined(load_parsed_esc50, save_folder_path, save_folder_path_raw, augmentations=4,
                                             frames=101, seed=41, batch_size=50):
     """
-    Generates ESC50 features from the 'processed' dataset. It does so according to the specifications in the paper. 
-    Each of the 2000 5sec clips is cut into 50% overlapping segments. 4 augmentations are made of each. 
+    Generates ESC50 features from the 'processed' dataset. It does so according to the specifications in the paper.
+    Each of the 2000 5sec clips is cut into 50% overlapping segments. 4 augmentations are made of each.
     Largely the same in implementation as the original Piczak code.
-    
+
     Args:
         load_parsed_esc50 (str): folder containing the esc50_meta.pkl and esc50_audio.dat files.
         save_folder_path (str): folder for saving logscaled mel features.
         save_folder_path_raw (str): folder for saving raw waveform features.
         augmentations (int): number of augmentations of each segment.
         frames (int): nr of frames of the mel features.
-        seed (int): seed for pseudo RNG.  
+        seed (int): seed for pseudo RNG.
         batch_size (int): batch size for multiprocessing (note, this has nothing to do with the minibatch size).
     """
 
@@ -205,7 +219,7 @@ def _extract_segments_combined(args):
 
     Args:
         args (tuple): (clip, filename, fold, category, category_name, augmented, frames).
-    
+
     Returns:
         (pd.DataFrame): segmented/augmented logscaled mel-spec features for single clip.
         (pd.DataFrame): segmented/augmented raw waveform features for single clip.
@@ -263,11 +277,11 @@ def _extract_segments_combined(args):
 def _augment_esc50(audio, sample_rate=22050):
     """
     Applies random pitch/time shifting and time stretching to a segment of an audio clip.
-     
+
     Args:
         audio (np.array): audio segment.
         sample_rate (int): sample rate.
-    
+
     Returns:
         (np.array): 'augmented' audio segment.
     """

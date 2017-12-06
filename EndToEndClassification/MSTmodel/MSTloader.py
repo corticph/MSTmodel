@@ -1,3 +1,17 @@
+# Copyright 2018 Corti
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#   http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import numpy as np
 import random
 
@@ -12,12 +26,12 @@ class MSTLoader():
     def __init__(self, features_raw_path, features_spect_path, test_fold, validation_fold):
         """
         Initializes the loader.
-        
+
         Args:
             features_raw (str): path to raw esc50 features.
-            features_spect (str): path to spect esc50 features. 
-            test_fold (int): test fold. 
-            validation_fold (int): validation fold. 
+            features_spect (str): path to spect esc50 features.
+            test_fold (int): test fold.
+            validation_fold (int): validation fold.
         """
 
         # load features from paths
@@ -90,7 +104,7 @@ class MSTLoader():
     def make_batch_indices(self, batch_size):
         """
         Generates randomized batch indices for a single train epoch.
-        
+
         Args:
             batch_size (int): size of the batch.
 
@@ -108,10 +122,10 @@ class MSTLoader():
 
     def load_batch(self, batch_indices):
         """
-        Loads a single batch from the trainset. 
-        
+        Loads a single batch from the trainset.
+
         Args:
-            batch_indices (list): indices for the batch. 
+            batch_indices (list): indices for the batch.
 
         Returns:
             (np.array): batch examples.

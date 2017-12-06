@@ -1,3 +1,17 @@
+# Copyright 2018 Corti
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#   http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import os
 import pydub
 import pickle
@@ -9,11 +23,11 @@ import scipy.signal
 def load_audio(path, duration=5000, framerate=22050, channel_nr=1):
     """
     Loads .ogg files and converts to np.array with specified nr of channels, and sample rate.
-    
+
     Args:
         path (str): to the audio file.
-        duration (int): duration in ms. 
-        framerate (int): sample rate. 
+        duration (int): duration in ms.
+        framerate (int): sample rate.
         channel_nr (int): numer of channels.
 
     Returns:
@@ -30,7 +44,7 @@ def load_audio(path, duration=5000, framerate=22050, channel_nr=1):
 
 def load_processed_esc50(load_folder_path):
     """
-    Loads previously processed esc50 dataset. 
+    Loads previously processed esc50 dataset.
 
     Args:
         load_folder_path (str): folder should contain the esc50_meta.pkl and esc50_audio.dat files.
@@ -91,9 +105,9 @@ def dump_pickle(save_path, dict_to_save):
 def load_pickle(load_path):
     """
     Loads a .pickle file as dictionary.
-    
+
     Args:
-        load_path (str): path to .pkl file. 
+        load_path (str): path to .pkl file.
 
     Returns:
         (dict): dictionary.
@@ -126,7 +140,7 @@ def generate_delta_031(spec):
 def classification_accuracy(test_data, predicted_labels):
     """
     Majority-voting based classification accuracy computation.
-    
+
     Args:
         test_data (pd.DataFrame): data subset for which the accuracy needs to be calculated.
         predicted_labels (np.array): labels predicted by the model.

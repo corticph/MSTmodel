@@ -4,11 +4,11 @@ Feel free to get in touch if you spot errors, have questions, or would like to d
 To get training:
 - download the esc50 dataset from: https://github.com/karoldvl/ESC-50 or https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/YDEPUT.
 - install the necessary dependencies as listed below.
-- clone the GitHub repository, and install the library by running ‘pip install .’ in the folder containing the setup.py file.
-- process the ESC50 dataset by running (./) the ‘make_esc50_data.sh’ file in the ‘Experiments’ folder after making it executable (chmod +x) and specifying the necessary paths.
-- train the MSTmodel for each of the folds by running the mst_learning.sh file in the ‘Experiments’ folder (…). Provide the path to the ‘features’ subfolder that is created during processing of the dataset.
-- train the classifiers for each of the folds by running the classifier_training.sh file in the ‘Experiments’ folder (…). Provide the path to the ‘features’ subfolder that is created during processing of the dataset.
-- use the ‘retrieve_fold_results’ function in the ‘Utilities’ folder to collect and average the results over the folds. Plotting was done using standard matplotlib functions.
+- clone the GitHub repository, and install the library by running `pip install .` in the folder containing the setup.py file.
+- process the ESC50 dataset by running (./) the `make_esc50_data.sh` file in the `Experiments` folder after making it executable (chmod +x) and specifying the necessary paths.
+- train the MSTmodel for each of the folds by running the `mst_learning.sh` file in the `Experiments` folder (…). Provide the path to the `features` subfolder that is created during processing of the dataset.
+- train the classifiers for each of the folds by running the `classifier_training.sh` file in the `Experiments` folder (…). Provide the path to the `features` subfolder that is created during processing of the dataset.
+- use the `retrieve_fold_results` function in the `Utilities` folder to collect and average the results over the folds. Plotting was done using standard matplotlib functions.
 
 Dependencies
 - librosa (tested with version 0.5.0), pyaudio, pydub, numpy, pandas, scipy, tensorflow (tested with version 1.2).

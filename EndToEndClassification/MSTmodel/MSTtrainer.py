@@ -1,3 +1,17 @@
+# Copyright 2018 Corti
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#   http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import tensorflow as tf
 import numpy as np
 import os
@@ -12,8 +26,8 @@ class MSTtrainer():
 
     def __init__(self, model, dataset, save_folder, restore_path=None, seed=42):
         """
-        Initializes the trainer. 
-        
+        Initializes the trainer.
+
         Args:
             model (class): initialized model (MSTmodel).
             dataset (class): loaded (ESC50) dataset (MSTLoader).
@@ -75,8 +89,8 @@ class MSTtrainer():
     def train(self, batch_size=100, no_epochs=800, lr=3e-4, overfit_window=50):
         """
         Performs training of the MSTmodel with early stopping based on the validation loss.
-        The Adam optimizer with constant learning rate is used. 
-        
+        The Adam optimizer with constant learning rate is used.
+
         Args:
             batch_size (int): number of train examples in a mini-batch.
             no_epochs (int): number of epochs (pre-defined, no overfitting test implemented in this set-up).

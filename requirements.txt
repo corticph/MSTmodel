@@ -1,0 +1,6 @@
+tensorflow==1.4.0
+joblib==0.11
+pandas==0.21.0
+librosa==0.5.1
+pydub==0.20.0
+progressbar2==3.34.3

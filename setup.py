@@ -1,5 +1,8 @@
 from distutils.core import setup
 
+with open('requirements.txt') as fp:
+    install_requires = fp.read()
+
 setup(
     name='EndToEndClassification',
     version='0.1',
@@ -7,8 +10,9 @@ setup(
               'EndToEndClassification/MSTmodel', 'EndToEndClassification/Utilities',
               'EndToEndClassification/EnvClassification/Models'],
     url='',
-    license='',
+    license='Apache License Version 2.0',
     author='Tycho_Tax_Corti',
     author_email='tt@cortilabs.com',
-    description=''
+    description='',
+    install_requires=install_requires
 )

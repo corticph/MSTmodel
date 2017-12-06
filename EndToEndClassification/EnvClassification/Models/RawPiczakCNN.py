@@ -1,3 +1,17 @@
+# Copyright 2018 Corti
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#   http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
 from tensorflow.contrib.layers.python.layers import initializers
@@ -7,8 +21,8 @@ from tensorflow.python.ops import init_ops
 class RawPiczak():
     """
     PiczakCNN adapted to work with raw speech as input.
-    
-    For details, see the NIPS workshop paper. 
+
+    For details, see the NIPS workshop paper.
     """
 
     def __init__(self, model_name, num_classes=50, weights_initializer=initializers.xavier_initializer(),
@@ -16,7 +30,7 @@ class RawPiczak():
                  dropout=False):
         """
         Initializes the RawPiczakCNN model class.
-        
+
         Args:
             model_name (str): model name.
             num_classes (int): number of the classes (i.e. size of the output layer of the classifier).
@@ -153,12 +167,12 @@ class RawPiczak():
     def get_loss_op(self, prediction, label_tensor):
         """
         Builds the cross entropy loss op.
-        
+
         Args:
             prediction (tf tensor): model prediction with dimensions [batch_size, num_classes].
             label_tensor (tf tensor): integer labels (not one-hot encoded!) with dimension [batch_size] where
                                     each entry in labels must be an index in [0, num_classes).
-        
+
         Returns:
             (tf operation): computes cross entropy loss op averaged over the mini-batch.
         """
